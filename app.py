@@ -19,15 +19,15 @@ def calculate():
         water = float(request.form['water'])
         land = float(request.form['land'])
 
-        # Carbon footprint calculations (in kg)
-        energy_footprint = energy * 0.92  # Example factor for energy consumption
-        fuel_footprint = fuel * 2.31  # Example factor for fuel combustion
-        methane_footprint = methane * 25  # Methane emissions factor
-        transportation_footprint = transportation * 1.45  # Example factor for transportation emissions
-        commute_footprint = commute * 0.78  # Example factor for commute emissions
-        waste_footprint = waste * 0.9  # Example factor for waste
-        water_footprint = water * 0.0065  # Example factor for water usage
-        land_footprint = land * 0.04  # Example factor for land use changes
+        # Carbon footprint calculations for one year (multiply by 12 for monthly data)
+        energy_footprint = energy * 0.92 * 12  # Example factor for energy consumption (yearly)
+        fuel_footprint = fuel * 2.31 * 12  # Example factor for fuel combustion (yearly)
+        methane_footprint = methane * 25 * 12  # Methane emissions factor (yearly)
+        transportation_footprint = transportation * 1.45 * 12  # Transportation emissions (yearly)
+        commute_footprint = commute * 0.78 * 12  # Commute emissions (yearly)
+        waste_footprint = waste * 0.9 * 12  # Waste (yearly)
+        water_footprint = water * 0.0065 * 12  # Water usage (yearly)
+        land_footprint = land * 0.04 * 12  # Land use changes (yearly)
 
         # Debugging statements
         print(f"Energy Footprint: {energy_footprint}")
@@ -39,7 +39,7 @@ def calculate():
         print(f"Water Footprint: {water_footprint}")
         print(f"Land Footprint: {land_footprint}")
 
-        # Total carbon footprint
+        # Total carbon footprint for one year
         total_footprint = energy_footprint + fuel_footprint + methane_footprint + transportation_footprint + commute_footprint + waste_footprint + water_footprint + land_footprint
 
         # Render result page with calculated values
